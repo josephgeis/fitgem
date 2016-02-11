@@ -3,6 +3,19 @@
   <head>
     <title>Fitbit Callback</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script>
+      function getUrlVars(){
+        var vars = [], hash;
+        var hashes = window.location.href.slice(window.location.href.indexOf('#') + 1).split('&');
+        for(var i = 0; i < hashes.length; i++)
+        {
+            hash = hashes[i].split('=');
+            vars.push(hash[0]);
+           vars[hash[0]] = hash[1];
+        }
+        return vars;
+      }
+    </script>
   </head>
   <body>
     <div class="container">
@@ -59,15 +72,6 @@
       user_id_html.innerHTML = params['user_id'];
     </script> -->
     <script>
-      function getUrlVars() {
-        var vars = {};
-        var parts = window.location.href.replace(/[#&]+([^=&]+)=([^&]*)/gi,    
-        function(m,key,value) {
-          vars[key] = value;
-        });
-        return vars;
-      }
-      
       // Set <code> tags to correct values.
       access_token_html.innerHTML = getUrlVars()["access_token"];
       expires_in_html.innerHTML = getUrlVars()["expires_in"];
