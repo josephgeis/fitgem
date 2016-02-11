@@ -3,6 +3,38 @@
   <head>
     <title>Fitbit Callback</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script type="text/javascript">
+      var get_params = function(search_string) {
+        var parse = function(params, pairs) {
+        var pair = pairs[0];
+        var parts = pair.split('=');
+        var key = decodeURIComponent(parts[0]);
+        var value = decodeURIComponent(parts.slice(1).join('='));
+      
+        // Handle multiple parameters of the same name
+        if (typeof params[key] === "undefined") {
+          params[key] = value;
+        } else {
+          params[key] = [].concat(params[key], value);
+        }
+              return pairs.length == 1 ? params : parse(params, pairs.slice(1))
+      }
+        // Get rid of leading ?
+        return search_string.length == 0 ? {} : parse({}, search_string.substr(1).split('&'));
+      }
+
+      var params = get_params(location.search);
+      
+      // Variables for stuff
+      var access_token_html = document.getElementById('access_token');
+      var expires_in_html = document.getElementById('expires_in');
+      var user_id_html = document.getElementById('user_id');
+      
+      // Set <code> tags to correct values.
+      access_token_html.innerHTML = params['access_token'];
+      expires_in_html.innerHTML = params['expires_in'];
+      user_id_html.innerHTML = params['user_id'];
+    </script>
   </head>
   <body>
     <div class="container">
@@ -13,15 +45,15 @@
       <div class="row marketing">
         <div class="col-lg-6">
           <h4>Access Token</h4>
-          <p>Used for authenticating your requests.</p>
+          <p>Used for authenticating your requests. <em>Required</em></p>
           <p>Your Access Token: <code id="access_token">Unknown</code></p>
 
           <h4>Expires In</h4>
-          <p>How long the program is allowed to use the access token.</p>
+          <p>How long the program is allowed to use the access token. <em>Good To Know</em></p>
           <p>Expires In: <code id="expires_in">0</code> seconds</p>
 
           <h4>User ID</h4>
-          <p>Your Account's ID number to acces your information.</p>
+          <p>Your Account's ID number to acces your information. <em>Required</em></p>
           <p>Your User ID: <code id="user_id">Unknown</code></p>
         </div>
       </div>
