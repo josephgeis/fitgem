@@ -3,6 +3,29 @@
   <head>
     <title>Fitbit Callback</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1>This is the callback page.</h1>
+        <p class="lead">You will see information that you must copy/paste below.</p>
+      </div>
+      <div class="row marketing">
+        <div class="col-lg-6">
+          <h4>Access Token</h4>
+          <p>Used for authenticating your requests. <em>Required</em></p>
+          <p>Your Access Token: <code id="access_token">Unknown</code></p>
+
+          <h4>Expires In</h4>
+          <p>How long the program is allowed to use the access token. <em>Good To Know</em></p>
+          <p>Expires In: <code id="expires_in">0</code> seconds</p>
+
+          <h4>User ID</h4>
+          <p>Your Account's ID number to acces your information. <em>Required</em></p>
+          <p>Your User ID: <code id="user_id">Unknown</code></p>
+        </div>
+      </div>
+    </div>
     <script type="text/javascript">
       var get_params = function(search_string) {
         var parse = function(params, pairs) {
@@ -35,28 +58,5 @@
       expires_in_html.innerHTML = params['expires_in'];
       user_id_html.innerHTML = params['user_id'];
     </script>
-  </head>
-  <body>
-    <div class="container">
-      <div class="jumbotron">
-        <h1>This is the callback page.</h1>
-        <p class="lead">You will see information that you must copy/paste below.</p>
-      </div>
-      <div class="row marketing">
-        <div class="col-lg-6">
-          <h4>Access Token</h4>
-          <p>Used for authenticating your requests. <em>Required</em></p>
-          <p>Your Access Token: <code id="access_token">Unknown</code></p>
-
-          <h4>Expires In</h4>
-          <p>How long the program is allowed to use the access token. <em>Good To Know</em></p>
-          <p>Expires In: <code id="expires_in">0</code> seconds</p>
-
-          <h4>User ID</h4>
-          <p>Your Account's ID number to acces your information. <em>Required</em></p>
-          <p>Your User ID: <code id="user_id">Unknown</code></p>
-        </div>
-      </div>
-    </div>
   </body>
 </html>
