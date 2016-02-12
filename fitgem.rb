@@ -29,12 +29,16 @@ class Fitbit
     @user_id
   end
 
+  @@authorization_header = {"Authorization" => "Bearer #{@access_token}"}
   def steps
     @@response = self.class.get("https://api.fitbit.com/1/user/#{@user_id}/activities/steps/date/today/1d/1min.json",
-      :headers => {"Authorization" => "Bearer #{@access_token}"})
-    @@response.each do |k, v|
-      v["value"]
-    end
+      :headers => @@authorization_header)
+    # @@response.flatten["value"]
+  end
+
+  def floors
+    @@response = self.class.get("https://api.fitbit.com/1/user/#{@user_id}/activities/floors/date/today/1d/1min.json",
+      :headers => @@authorization_header)
   end
 end
 
