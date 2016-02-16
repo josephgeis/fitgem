@@ -1,36 +1,33 @@
 #!/usr/bin/env ruby
 require 'httparty'
 require 'multi_json'
-
+puts "Welcome to FitGem!"
 class Fitbit
   include HTTParty
   format :json
   @@base_uri = 'api.fitbit.com/1/user'
 
   def initialize()
-    # FitGem Welcome
-    puts "Welcome to FitGem!"
-    puts "To get started, I need some information."
+    if File.exists?("~/.fitgem")
+      @config = File.open("~/.fitgem", "w+")
+      @access_token = @config.readline.chomp
+      @user_id = @config.readline.chomp
+    else
+      @config = File.new("~/.fitgem", "w+")
+      puts "To get started, I need some information."
+      puts "Please open your default browser and navigate to https://juniorRubyist.github.io/fitgem/authorize.html"
+      puts "Then authorize your Fitbit account."
 
-    # Set-Up
-    puts "Please go to http://jgeis.github.io/fitgem/authorize.html and click \"Authorize Fitbit\". Push Enter when completed\n"
-    gets.chomp
-    puts "Ok now, paste the access token here. It is very long. Make sure you get all of it."
-    @access_token = gets.chomp
-    puts "Great, now paste the user id here."
-    @user_id = gets.chomp
-    puts "All done! You will need to do this every time I run. Press Enter to continue to main menu."
-    gets.chomp
-    system( "clear" ) # Clears Screen
-    @authorization_header = {"Authorization" => "Bearer #{@access_token}"}
-  end
+      print "Copy your Access Token: "
+      @access_token = gets.chomp
+      @config.puts(@access_token)
+      print "Copy your User ID: "
+      @user_id = gets.chomp
+      @config.puts(@user_id)
 
-  def current_token
-    @access_token
-  end
-
-  def current_uid
-    @user_id
+      system( "clear" ) # Clears Screen
+      @authorization_header = {"Authorization" => "Bearer #{@access_token}"}
+    end
   end
 
   def steps
