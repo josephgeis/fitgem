@@ -8,26 +8,17 @@ class Fitbit
   @@base_uri = 'api.fitbit.com/1/user'
 
   def initialize()
-    if File.exists?("~/.fitgem")
-      @config = File.open("~/.fitgem", "w+")
-      @access_token = @config.readline.chomp
-      @user_id = @config.readline.chomp
-    else
-      @config = File.new("~/.fitgem", "w+")
-      puts "To get started, I need some information."
-      puts "Please open your default browser and navigate to https://juniorRubyist.github.io/fitgem/authorize.html"
-      puts "Then authorize your Fitbit account."
+    puts "To get started, I need some information."
+    puts "Please open your default browser and navigate to https://juniorRubyist.github.io/fitgem/authorize.html"
+    puts "Then authorize your Fitbit account."
 
-      print "Copy your Access Token: "
-      @access_token = gets.chomp
-      @config.puts(@access_token)
-      print "Copy your User ID: "
-      @user_id = gets.chomp
-      @config.puts(@user_id)
+    print "Copy your Access Token: "
+    @access_token = gets.chomp
+    print "Copy your User ID: "
+    @user_id = gets.chomp
 
-      system( "clear" ) # Clears Screen
-      @authorization_header = {"Authorization" => "Bearer #{@access_token}"}
-    end
+    system( "clear" ) # Clears Screen
+    @authorization_header = {"Authorization" => "Bearer #{@access_token}"}
   end
 
   def steps
