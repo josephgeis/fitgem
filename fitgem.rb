@@ -68,7 +68,7 @@ exit_var = false
 travis_ci = `printf $TRAVIS_CI`
 # Main menu
 while !exit_var
-  if travis_ci == "TRUE"
+  if travis_ci == true
     `clear`
     puts "Notice: Travis CI detected\n"
     puts "===Full Report==="
