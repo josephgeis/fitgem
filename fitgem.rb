@@ -8,19 +8,28 @@ class Fitbit
   @@base_uri = 'api.fitbit.com/1/user'
 
   def initialize()
-    puts "To get started, I need some information."
-    puts "Please open your default browser and navigate to https://juniorRubyist.github.io/fitgem/authorize.html"
-    puts "Then authorize your Fitbit account."
+    @access_token = `printf $FB_ACCESS_TOKEN`
+    @user_id = `printf $FB_USER_ID`
 
-    print "Copy your Access Token: "
-    @access_token = gets.chomp
-    print "Copy your User ID: "
-    @user_id = gets.chomp
+    unless @access_token != "" && @user_id != ""
+      puts "We need some information. It will be saved"
+      print "Copy your Access Token: "
+      @access_token = gets.chomp
 
-    system( "clear" ) # Clears Screen
-    @authorization_header = {"Authorization" => "Bearer #{@access_token}"}
+      print "Copy your User ID: "
+      @user_id = gets.chomp
+
+      system( "clear" ) # Clears Screen
+      # system( "echo \"export FB_ACCESS_TOKEN=#{@acces_token}\" >> ~/.bashrc")
+      @authorization_header = {"Authorization" => "Bearer #{@access_token}"}
   end
 
+  def debug_id
+    print "BEGIN===\n"
+    print @access_token
+    puts @user_id
+    print "===END"
+  end
   def steps
     @response = self.class.get("https://#{@@base_uri}/#{@user_id}/activities/steps/date/today/1d/1min.json",
       :headers => @authorization_header)
@@ -40,6 +49,8 @@ exit_var = false
 # Main menu
 while !exit_var
   # Will Repeat until x is submitted
+  fitbit.debug_id
+
   puts "Choose what to do:\n-------"
   puts "a -- give me full report (steps, calories, floors [if available], and distance)"
   puts "s -- give me steps report"
@@ -48,7 +59,8 @@ while !exit_var
   puts "c -- give me calories burned report"
   puts "o -- options"
   puts "x -- exit Fitgem"
-  choice = gets.chomp
+  choice = gets
+  choice.to_s.chomp!
   system( "clear" )
   case choice
     when "a"
@@ -78,9 +90,11 @@ while !exit_var
         puts "c -- give me calories burned report"
         puts "o -- options"
         puts "x -- exit Fitgem"
-        choice = gets.chomp
+        choice = gets
+        choice.to_s.chomp
       end
     else
       puts "Try Again! Not a command"
     end
+  end
 end
