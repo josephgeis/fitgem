@@ -68,7 +68,7 @@ exit_var = false
 travis_ci = `printf $TRAVIS_CI`
 # Main menu
 while !exit_var
-  if travis_ci == true
+  if travis_ci == "true"
     `clear`
     puts "Notice: Travis CI detected\n"
     puts "===Full Report==="
@@ -90,7 +90,6 @@ while !exit_var
     puts "c -- give me calories burned report"
     puts "o -- options"
     puts "x -- exit Fitgem"
-    puts fitgem.steps
     choice = gets.chomp
   end
   system( "clear" )
