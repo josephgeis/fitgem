@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 require 'httparty'
 require 'multi_json'
+
 puts "Welcome to FitGem!"
 class Fitbit
   include HTTParty
@@ -41,35 +42,62 @@ class Fitbit
     @response = self.class.get("https://#{@@base_uri}/#{@user_id}/activities/floors/date/today/1d/1min.json",
       :headers => @authorization_header)
   end
+
+  def cals_out
+    @response = self.class.get("https://#{@@base_uri}/#{@user_id}/activities/calories/date/today/1d/1min.json",
+      :headers => @authorization_header)
+  end
+
+  def distance
+    @response = self.class.get("https://#{@@base_uri}/#{@user_id}/activities/distance/date/today/1d/1min.json",
+      :headers => @authorization_header)
+  end
+
+  def full_report
+    # Full Report
+    puts "Full Report:\n-------"
+    puts "#{self.class.steps} steps"
+    puts "#{self.class.distance} miles"
+    puts "#{self.class.floors} stairs climbed"
+    puts "#{self.class.cals_out} calories burned"
+  end
 end
 
 fitbit = Fitbit.new()
 exit_var = false
-
+travis_ci = `printf $TRAVIS_CI`
 # Main menu
 while !exit_var
   # Will Repeat until x is submitted
-  fitbit.debug_id
 
-  puts "Choose what to do:\n-------"
-  puts "a -- give me full report (steps, calories, floors [if available], and distance)"
-  puts "s -- give me steps report"
-  puts "d -- give me distance report"
-  puts "f -- give me floors report (if availiable)"
-  puts "c -- give me calories burned report"
-  puts "o -- options"
-  puts "x -- exit Fitgem"
-  choice = gets
-  choice.to_s.chomp!
+  if travis_ci == "TRUE"
+    `clear`
+    puts "Notice: Travis CI detected\n"
+    puts "===Full Report==="
+    fitbit.full_report
+    puts "===Steps==="
+    puts fitbit.steps
+    puts "===Floors==="
+    puts fitbit.floors
+    puts "===Distance==="
+    puts fitbit.distance
+    puts "===Calories==="
+    puts fitbit.cals_out
+  else
+    puts "Choose what to do:\n-------"
+    puts "a -- give me full report (steps, calories, floors [if available], and distance)"
+    puts "s -- give me steps report"
+    puts "d -- give me distance report"
+    puts "f -- give me floors report (if availiable)"
+    puts "c -- give me calories burned report"
+    puts "o -- options"
+    puts "x -- exit Fitgem"
+    choice = gets.chomp
+  end
   system( "clear" )
   case choice
     when "a"
-      # Full Report
-      puts "Full Report:\n-------"
-      puts "#{fitbit.steps} steps"
-      puts "#{fitbit.distance} miles"
-      puts "#{fitbit.floors} stairs climbed"
-      puts "#{fitbit.cals_out} calories burned"
+      fitbit.full_report
     when "s"
       # Step Count
       puts "Today's Step Count: #{fitbit.steps}"
