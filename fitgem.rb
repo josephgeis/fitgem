@@ -61,6 +61,9 @@ class FitbitAccount
     puts "#{self.floors} stairs climbed"
     puts "#{self.cals_out} calories burned"
   end
+  def hello
+    return "Hello, World!"
+  end
 end
 
 fitgem = FitbitAccount.new()
@@ -68,6 +71,7 @@ exit_var = false
 travis_ci = `printf $TRAVIS_CI`
 # Main menu
 while !exit_var
+  puts fitgem.hello()
   if travis_ci == "true"
     `clear`
     puts "Notice: Travis CI detected\n"
@@ -105,19 +109,21 @@ while !exit_var
       puts "Floors Climbed: #{fitgem.floors}"
     when "c"
       puts "Calories Burned: #{fitgem.cals_out}"
-    when "o"
-      opt_exit = !false
-      while opt_exit
-        puts "Change Options:\n-------"
-        puts "a -- give me full report (steps, calories, floors [if available], and distance)"
-        puts "s -- give me steps report"
-        puts "d -- give me distance report"
-        puts "f -- give me floors report (if availiable)"
-        puts "c -- give me calories burned report"
-        puts "o -- options"
-        puts "x -- exit Fitgem"
-        choice = gets.chomp
-      end
+    # when "o"
+    #  opt_exit = !false
+    #  while opt_exit
+    #    puts "Change Options:\n-------"
+    #    puts "a -- give me full report (steps, calories, floors [if available], and distance)"
+    #    puts "s -- give me steps report"
+    #    puts "d -- give me distance report"
+    #    puts "f -- give me floors report (if availiable)"
+    #    puts "c -- give me calories burned report"
+    #    puts "o -- options"
+    #    puts "x -- exit Fitgem"
+    #    choice = gets.chomp
+    #  end
+    when "x"
+      exit_var = true
     else
       puts "Try Again! Not a command"
   end
