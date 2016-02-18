@@ -36,21 +36,21 @@ class FitbitAccount
     @response = self.class.get("https://#{@@base_uri}/#{@user_id}/activities/floors/date/today/1d/1min.json",
       :headers => {"Authorization" => "Bearer #{@access_token}"})
     @parsed_response = MultiJson.load(@response.body)
-    @parsed_response = @parsed_response["activities-steps"][0]["value"].to_i
+    @parsed_response = @parsed_response["activities-floors"][0]["value"].to_i
   end
 
   def cals_out
     @response = self.class.get("https://#{@@base_uri}/#{@user_id}/activities/calories/date/today/1d/1min.json",
       :headers => {"Authorization" => "Bearer #{@access_token}"})
     @parsed_response = MultiJson.load(@response.body)
-    @parsed_response = @parsed_response["activities-steps"][0]["value"].to_i
+    @parsed_response = @parsed_response["activities-calories"][0]["value"].to_i
   end
 
   def distance
     @response = self.class.get("https://#{@@base_uri}/#{@user_id}/activities/distance/date/today/1d/1min.json",
       :headers => {"Authorization" => "Bearer #{@access_token}"})
     @parsed_response = MultiJson.load(@response.body)
-    @parsed_response = @parsed_response["activities-steps"][0]["value"]
+    @parsed_response = @parsed_response["activities-distance"][0]["value"]
   end
 
   def full_report
