@@ -56,10 +56,10 @@ class FitbitAccount
   def full_report
     # Full Report
     puts "Full Report:\n-------"
-    puts "#{self.class.steps} steps"
-    puts "#{self.class.distance} miles"
-    puts "#{self.class.floors} stairs climbed"
-    puts "#{self.class.cals_out} calories burned"
+    puts "#{self.steps} steps"
+    puts "#{self.distance} miles"
+    puts "#{self.floors} stairs climbed"
+    puts "#{self.cals_out} calories burned"
   end
 end
 
