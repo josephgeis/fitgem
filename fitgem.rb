@@ -20,37 +20,37 @@ class FitbitAccount
       @user_id = gets.chomp
 
       system( "clear" ) # Clears Screen
-      # system( "echo \"export FB_ACCESS_TOKEN=#{@acces_token}\" >> ~/.bashrc")
+      # system( "echo \"export FB_ACCESS_TOKEN=#{@access_token}\" >> ~/.bashrc")
       @authorization_header = {"Authorization" => "Bearer #{@access_token}"}
     end
   end
 
   def steps
     @response = self.class.get("https://#{@@base_uri}/#{@user_id}/activities/steps/date/today/1d/1min.json",
-      :headers => @authorization_header)
+      :headers => {"Authorization" => "Bearer #{@access_token}"})
     @parsed_response = MultiJson.load(@response.body)
     @parsed_response = @parsed_response["activities-steps"][0]["value"].to_i
   end
 
   def floors
     @response = self.class.get("https://#{@@base_uri}/#{@user_id}/activities/floors/date/today/1d/1min.json",
-      :headers => @authorization_header)
+      :headers => {"Authorization" => "Bearer #{@access_token}"})
     @parsed_response = MultiJson.load(@response.body)
     @parsed_response = @parsed_response["activities-steps"][0]["value"].to_i
   end
 
   def cals_out
     @response = self.class.get("https://#{@@base_uri}/#{@user_id}/activities/calories/date/today/1d/1min.json",
-      :headers => @authorization_header)
+      :headers => {"Authorization" => "Bearer #{@access_token}"})
     @parsed_response = MultiJson.load(@response.body)
     @parsed_response = @parsed_response["activities-steps"][0]["value"].to_i
   end
 
   def distance
     @response = self.class.get("https://#{@@base_uri}/#{@user_id}/activities/distance/date/today/1d/1min.json",
-      :headers => @authorization_header)
+      :headers => {"Authorization" => "Bearer #{@access_token}"})
     @parsed_response = MultiJson.load(@response.body)
-    @parsed_response = @parsed_response["activities-steps"][0]["value"].to_i
+    @parsed_response = @parsed_response["activities-steps"][0]["value"]
   end
 
   def full_report
@@ -61,6 +61,7 @@ class FitbitAccount
     puts "#{self.floors} stairs climbed"
     puts "#{self.cals_out} calories burned"
   end
+
   def hello
     return "Hello, World!"
   end
@@ -71,7 +72,6 @@ exit_var = false
 travis_ci = `printf $TRAVIS_CI`
 # Main menu
 while !exit_var
-  puts fitgem.hello()
   if travis_ci == "true"
     `clear`
     puts "Notice: Travis CI detected\n"
