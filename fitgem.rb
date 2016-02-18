@@ -85,6 +85,7 @@ while !exit_var
     puts fitgem.distance
     puts "===Calories==="
     puts fitgem.cals_out
+    exit_var = true
   else
     puts "Choose what to do:\n-------"
     puts "a -- give me full report (steps, calories, floors [if available], and distance)"
