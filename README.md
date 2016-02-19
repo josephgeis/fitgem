@@ -38,3 +38,31 @@ Fitgem is an interactive CLI Fitbit client that can grab your basic activities f
   export FB_USER_ID="YOUR_USER_ID_IN_QUOTES"
   ```
 5. Type `fitgem` in a terminal window.
+
+## Portable Installation
+
+1. Clone the fitgem repository.
+
+  ```sh
+  git clone https://github.com/juniorRubyist/fitgem.git
+  ```
+2. `cd` into `fitgem/bin`.
+
+  ```sh
+  cd fitgem/bin
+  ```
+3. Copy fitgem to your Desktop, home folder, etc.
+
+  ```sh
+  cp fitgem /your/destination/folder
+  ```
+4. Follow step 4 above.
+
+## Basic Usage
+
+* Use command `a` to print all of your basic data.
+* Use command `s` to print your steps data.
+* Use command `d` to print your distance data
+* Use command `f` to print your floors data.
+* Use command `c` to print your calories data.
+* Use command `x` to exit fitgem.
