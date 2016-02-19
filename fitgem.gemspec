@@ -1,5 +1,5 @@
 Gem::Specification.new do |s|
-  s.name        = 'fitgem'
+  s.name        = 'fitgem-app'
   s.version     = '1.0.0'
   s.date        = '2016-02-19'
   s.summary     = "Fitbit CLI"
@@ -11,4 +11,6 @@ Gem::Specification.new do |s|
   s.homepage    =
     'http://juniorrubyist.github.io/fitgem'
   s.license       = 'MIT'
+  s.add_runtime_dependency 'multi_json', '~> 1.11', '>= 1.11.2'
+  s.add_runtime_dependency 'httparty', '~> 0.13'
 end
