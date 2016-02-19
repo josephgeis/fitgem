@@ -93,7 +93,6 @@ while !exit_var
     puts "d -- give me distance report"
     puts "f -- give me floors report (if availiable)"
     puts "c -- give me calories burned report"
-    puts "o -- options"
     puts "x -- exit Fitgem"
     choice = gets.chomp
   end
