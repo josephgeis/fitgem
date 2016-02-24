@@ -5,11 +5,11 @@ Fitgem is an interactive CLI Fitbit client that can grab your basic activities f
 ![Fitgem](fitgem.gif)
 
 ## Contents
-* [Dependencies/Requirements](#Dependencies/Requirements)
-* [Install](#Install)
-  * RubyGems Method
-  * Portable Installation
-* Basic Usage
+* [Dependencies/Requirements](#dependenciesrequirements)
+* [Install](#install)
+  * [RubyGems Method](#rubygems-method-)
+  * [Portable Installation](#portable-installation)
+* [Basic Usage](#basic-usage)
 
 ## Dependencies/Requirements
 * `ruby`
