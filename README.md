@@ -2,14 +2,25 @@
 A Ruby based Fitbit CLI client.
 
 Fitgem is an interactive CLI Fitbit client that can grab your basic activities from Fitbit.com and print them on your console.
+![Fitgem](fitgem.gif)
 
-## Dependencies
+## Contents
+* [Dependencies/Requirements](#Dependencies/Requirements)
+* [Install](#Install)
+  * RubyGems Method
+  * Portable Installation
+* Basic Usage
+
+## Dependencies/Requirements
 * `ruby`
 * `httparty` and `multi-json` libraries
+* Linux/Mac OSX 
 
-## RubyGems Installation [![Gem Version](https://badge.fury.io/rb/fitgem-app.svg)](https://badge.fury.io/rb/fitgem-app)
+## Install
+### RubyGems Method [![Gem Version](https://badge.fury.io/rb/fitgem-app.svg)](https://badge.fury.io/rb/fitgem-app)
+![Gem Install Method](installgem.gif)
 
-1. Install RubyGems
+1. Install RubyGems (only on Linux, if you don't have it)
   1. Clone the RubyGems repository.
     
     ```sh
@@ -39,7 +50,8 @@ Fitgem is an interactive CLI Fitbit client that can grab your basic activities f
   ```
 5. Type `fitgem` in a terminal window.
 
-## Portable Installation
+### Portable Installation
+![Git Installation](installgit.gif)
 
 1. Clone the fitgem repository.
 
@@ -57,6 +69,7 @@ Fitgem is an interactive CLI Fitbit client that can grab your basic activities f
   cp fitgem /your/destination/folder
   ```
 4. Follow step 4 above.
+5. Run `./fitgem` from where you installed it.
 
 ## Basic Usage
 
