@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 require 'httparty'
 require 'multi_json'
+require 'coveralls'
+Coveralls.wear!
 
 puts "Welcome to FitGem!"
 class FitbitAccount
