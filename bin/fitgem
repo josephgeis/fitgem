@@ -148,7 +148,6 @@ while !exit_var
     else
       puts "Try Again! Not a command"
   end
-=======
 
 choice = ARGV[0]
 case choice
@@ -166,5 +165,4 @@ when 'help', 'h', '?'
   fitgem.help
 else
   fitgem.help
->>>>>>> less_interactive
 end
