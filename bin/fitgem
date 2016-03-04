@@ -7,8 +7,8 @@ class FitbitAccount
   @@base_uri = 'api.fitbit.com/1/user'
 
   def initialize()
-    @access_token = `printf $FB_ACCESS_TOKEN`
-    @user_id = `printf $FB_USER_ID`
+    @access_token = `echo -n $FB_ACCESS_TOKEN`
+    @user_id = `echo -n $FB_USER_ID`
 
     if @access_token == "" && @user_id == ""
       puts "We need some information. It will be saved"
