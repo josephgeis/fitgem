@@ -1,0 +1,113 @@
+#!/usr/bin/env ruby
+require 'httparty'
+require 'multi_json'
+
+puts "Welcome to FitGem!"
+class FitbitAccount
+  include HTTParty
+  @@base_uri = 'api.fitbit.com/1/user'
+
+  def initialize()
+    @access_token = `echo -n $FB_ACCESS_TOKEN`
+    @user_id = `echo -n $FB_USER_ID`
+
+    if @access_token == "" && @user_id == ""
+      puts "We need some information. It will be saved"
+      print "Copy your Access Token: "
+      @access_token = gets.chomp
+
+      print "Copy your User ID: "
+      @user_id = gets.chomp
+
+      system( "clear" ) # Clears Screen
+      # system( "echo \"export FB_ACCESS_TOKEN=#{@access_token}\" >> ~/.bashrc")
+      @authorization_header = {"Authorization" => "Bearer #{@access_token}"}
+    end
+  end
+
+  def steps
+    @response = self.class.get("https://#{@@base_uri}/#{@user_id}/activities/steps/date/today/1d/1min.json",
+      :headers => {"Authorization" => "Bearer #{@access_token}"})
+    @parsed_response = MultiJson.load(@response.body)
+    @parsed_response = @parsed_response["activities-steps"][0]["value"].to_i
+  end
+
+  def floors
+    @response = self.class.get("https://#{@@base_uri}/#{@user_id}/activities/floors/date/today/1d/1min.json",
+      :headers => {"Authorization" => "Bearer #{@access_token}"})
+    @parsed_response = MultiJson.load(@response.body)
+    @parsed_response = @parsed_response["activities-floors"][0]["value"].to_i
+  end
+
+  def cals_out
+    @response = self.class.get("https://#{@@base_uri}/#{@user_id}/activities/calories/date/today/1d/1min.json",
+      :headers => {"Authorization" => "Bearer #{@access_token}"})
+    @parsed_response = MultiJson.load(@response.body)
+    @parsed_response = @parsed_response["activities-calories"][0]["value"].to_i
+  end
+
+  def distance
+    @response = self.class.get("https://#{@@base_uri}/#{@user_id}/activities/distance/date/today/1d/1min.json",
+      :headers => {"Authorization" => "Bearer #{@access_token}"})
+    @parsed_response = MultiJson.load(@response.body)
+    @parsed_response = @parsed_response["activities-distance"][0]["value"]
+  end
+
+  def full_report
+    # Full Report
+    puts "Full Report:\n-------"
+    puts "#{self.steps} steps"
+    puts "#{self.distance} miles"
+    puts "#{self.floors} stairs climbed"
+    puts "#{self.cals_out} calories burned"
+  end
+
+  def hello
+    return "Hello, World!"
+  end
+end
+
+fitgem = FitbitAccount.new()
+exit_var = false
+# Main menu
+while !exit_var
+  puts "Choose what to do:\n-------"
+  puts "a -- give me full report (steps, calories, floors [if available], and distance)"
+  puts "s -- give me steps report"
+  puts "d -- give me distance report"
+  puts "f -- give me floors report (if availiable)"
+  puts "c -- give me calories burned report"
+  puts "x -- exit Fitgem"
+  choice = gets.chomp
+  system( "clear" )
+  case choice
+    when "a"
+      fitgem.full_report
+    when "s"
+      # Step Count
+      puts "Today's Step Count: #{fitgem.steps}"
+    when "d"
+      puts "Today's Distance: #{fitgem.distance} mi."
+    when "f"
+      puts "Floors Climbed: #{fitgem.floors}"
+    when "c"
+      puts "Calories Burned: #{fitgem.cals_out}"
+    # when "o"
+    #  opt_exit = !false
+    #  while opt_exit
+    #    puts "Change Options:\n-------"
+    #    puts "a -- give me full report (steps, calories, floors [if available], and distance)"
+    #    puts "s -- give me steps report"
+    #    puts "d -- give me distance report"
+    #    puts "f -- give me floors report (if availiable)"
+    #    puts "c -- give me calories burned report"
+    #    puts "o -- options"
+    #    puts "x -- exit Fitgem"
+    #    choice = gets.chomp
+    #  end
+    when "x"
+      exit_var = true
+    else
+      puts "Try Again! Not a command"
+  end
+end
