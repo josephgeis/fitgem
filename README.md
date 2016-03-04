@@ -1,15 +1,15 @@
-# fitgem [![Build Status](https://travis-ci.org/juniorRubyist/fitgem.svg?branch=master)](https://travis-ci.org/juniorRubyist/fitgem) :octocat:
+# fitgem [![Build Status](https://travis-ci.org/juniorRubyist/fitgem.svg?branch=master)](https://travis-ci.org/juniorRubyist/fitgem) [![Coverage Status](https://coveralls.io/repos/github/juniorRubyist/fitgem/badge.svg?branch=master)](https://coveralls.io/github/juniorRubyist/fitgem?branch=master) :octocat:
 A Ruby based Fitbit CLI client.
 
 Fitgem is an interactive CLI Fitbit client that can grab your basic activities from Fitbit.com and print them on your console.
 ![Fitgem](fitgem.gif)
 
 ## Contents
-* [Dependencies/Requirements](#Dependencies/Requirements)
-* [Install](#Install)
-  * RubyGems Method
-  * Portable Installation
-* Basic Usage
+* [Dependencies/Requirements](#dependenciesrequirements)
+* [Install](#install)
+  * [RubyGems Method](#rubygems-method-)
+  * [Portable Installation](#portable-installation)
+* [Basic Usage](#basic-usage)
 
 ## Dependencies/Requirements
 * `ruby`

@@ -8,3 +8,6 @@ notifications:
     rooms:
       - juniorrubyist:xbZOhMTfyHfBFu1XOZeYF61H#general
       - juniorrubyist:xbZOhMTfyHfBFu1XOZeYF61H#fitgem
+addons:
+    code_climate:
+        repo_token: cd34246c9f3cd637ecad7d3f0250eb75fb2c4b9fb92cd52179b44d418a4ee533
