@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'fitgem-app'
-  s.version     = '1.0.0'
+  s.version     = '1.1.0'
   s.date        = '2016-02-19'
   s.summary     = "Fitbit CLI"
   s.description = "A simple CLI Fitbit Client"
@@ -13,4 +13,5 @@ Gem::Specification.new do |s|
   s.license       = 'MIT'
   s.add_runtime_dependency 'multi_json', '~> 1.11', '>= 1.11.2'
   s.add_runtime_dependency 'httparty', '~> 0.13'
+  s.post_install_message = "Please go to http://juniorRubyist.github.io/fitgem/authorize.html to get started."
 end
