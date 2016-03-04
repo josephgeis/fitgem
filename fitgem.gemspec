@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'fitgem-app'
-  s.version     = '2.0.0'
+  s.version     = '2.0.2'
   s.date        = '2016-03-04'
   s.summary     = "Fitbit CLI"
   s.description = "A simple CLI Fitbit Client"

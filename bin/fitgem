@@ -89,66 +89,6 @@ class FitbitAccount
 end
 
 fitgem = FitbitAccount.new()
-exit_var = false
-travis_ci = `echo -n $TRAVIS_CI`
-# Main menu
-while !exit_var
-  if travis_ci == "true"
-    `clear`
-    puts "Notice: Travis CI detected\n"
-    puts "===Full Report==="
-    fitgem.full_report
-    puts "===Steps==="
-    puts fitgem.steps
-    puts "===Floors==="
-    puts fitgem.floors
-    puts "===Distance==="
-    puts fitgem.distance
-    puts "===Calories==="
-    puts fitgem.cals_out
-    exit_var = true
-  else
-    puts "Choose what to do:\n-------"
-    puts "a -- give me full report (steps, calories, floors [if available], and distance)"
-    puts "s -- give me steps report"
-    puts "d -- give me distance report"
-    puts "f -- give me floors report (if availiable)"
-    puts "c -- give me calories burned report"
-    puts "x -- exit Fitgem"
-    choice = gets.chomp
-  end
-  system( "clear" )
-  case choice
-    when "a"
-      fitgem.full_report
-    when "s"
-      # Step Count
-      puts "Today's Step Count: #{fitgem.steps}"
-    when "d"
-      puts "Today's Distance: #{fitgem.distance} mi."
-    when "f"
-      puts "Floors Climbed: #{fitgem.floors}"
-    when "c"
-      puts "Calories Burned: #{fitgem.cals_out}"
-    # when "o"
-    #  opt_exit = !false
-    #  while opt_exit
-    #    puts "Change Options:\n-------"
-    #    puts "a -- give me full report (steps, calories, floors [if available], and distance)"
-    #    puts "s -- give me steps report"
-    #    puts "d -- give me distance report"
-    #    puts "f -- give me floors report (if availiable)"
-    #    puts "c -- give me calories burned report"
-    #    puts "o -- options"
-    #    puts "x -- exit Fitgem"
-    #    choice = gets.chomp
-    #  end
-    when "x"
-      exit_var = true
-    else
-      puts "Try Again! Not a command"
-  end
-
 choice = ARGV[0]
 case choice
 when 'steps', 's'
