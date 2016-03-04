@@ -1,5 +1,5 @@
 task :default => [:test]
 
 task :test do
-  ruby "bin/fitgem"
+  ruby "test/test_fitgem.rb"
 end

@@ -2,7 +2,6 @@
 require 'httparty'
 require 'multi_json'
 
-puts "Welcome to FitGem!"
 class FitbitAccount
   include HTTParty
   @@base_uri = 'api.fitbit.com/1/user'
@@ -64,6 +63,28 @@ class FitbitAccount
 
   def hello
     return "Hello, World!"
+  end
+
+  def help
+    puts "NAME"
+    puts "    fitgem - A simple Fitbit CLI\n"
+    puts "SYNOPSIS"
+    puts "    fitgem SHORT-OPTION"
+    puts "    fitgem LONG-OPTION\n"
+    puts "DESCRIPTION"
+    puts "    steps (s) -- Output steps"
+    puts "    distance (d) -- Output distance (miles)"
+    puts "    floors (f) -- Output climbed floors"
+    puts "    calories (c) -- Output calories burned"
+    puts "    all (a) -- Output a full report"
+    puts "    full -- Same as all or a"
+    puts "    help (?) -- Output this help. Same as leaving blank\n"
+    puts "BUGS"
+    puts "    Please report any bugs to the bug tracker on Github at http://github.com/juniorRubyist/fitgem."
+    puts "\nLICENSE"
+    puts "    This software is released under the MIT License.\n"
+    puts "AUTHOR"
+    puts "    Joseph Geis <geis28@gmail.com> (see files AUTHORS for details)."
   end
 end
 
@@ -127,4 +148,23 @@ while !exit_var
     else
       puts "Try Again! Not a command"
   end
+=======
+
+choice = ARGV[0]
+case choice
+when 'steps', 's'
+  puts fitgem.steps
+when 'distance', 'd'
+  puts fitgem.distance
+when 'floors', 'f'
+  puts fitgem.floors
+when 'calories', 'c'
+  puts calories
+when 'full', 'all', 'a'
+  fitgem.full_report
+when 'help', 'h', '?'
+  fitgem.help
+else
+  fitgem.help
+>>>>>>> less_interactive
 end
