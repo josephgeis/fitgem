@@ -19,10 +19,10 @@ Fitgem is an interactive CLI Fitbit client that can grab your basic activities f
 * Linux/Mac OSX 
 
 ## Install
-### RubyGems Method [![Gem Version](https://badge.fury.io/rb/fitgem-app.svg)](https://badge.fury.io/rb/fitgem-app)
-![Gem Install Method](installgem.gif)
+### RubyGems Method [![Gem](https://img.shields.io/gem/v/fitgem-app.svg)](https://rubygems.org/gems/fitgem-app) [![Gem](https://img.shields.io/gem/dt/fitgem-app.svg)](https://rubygems.org/gems/fitgem-app)
+![Gem Install Method](installgem.gif) 
 
-1. Install RubyGems (only on Linux, if you don't have it)
+1. Install RubyGems (included with Mac)
   1. Clone the RubyGems repository.
     
     ```sh
@@ -50,7 +50,7 @@ Fitgem is an interactive CLI Fitbit client that can grab your basic activities f
   export FB_ACCESS_TOKEN="YOUR_TOKEN_IN_QUOTES"
   export FB_USER_ID="YOUR_USER_ID_IN_QUOTES"
   ```
-5. Type `fitgem` in a terminal window.
+5. Type `fitgem <command>` in a terminal window.
 
 ### Portable Installation
 ![Git Installation](installgit.gif)
@@ -71,13 +71,5 @@ Fitgem is an interactive CLI Fitbit client that can grab your basic activities f
   cp fitgem /your/destination/folder
   ```
 4. Follow step 4 above.
-5. Run `./fitgem` from where you installed it.
-
-## Basic Usage
-
-* Use command `a` to print all of your basic data.
-* Use command `s` to print your steps data.
-* Use command `d` to print your distance data
-* Use command `f` to print your floors data.
-* Use command `c` to print your calories data.
-* Use command `x` to exit fitgem.
+5. `chmod` `fitgem` to `775`.
+6. Run `./fitgem <command>` from where you installed it.
