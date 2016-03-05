@@ -18,13 +18,15 @@ class FitbitAccount
 
       print "Copy your Access Token: "
       @access_token = gets.chomp
-      @default_shell.puts("export FB_ACCESS_TOKEN=\"@access_token\"")
+      @default_shell.puts("export FB_ACCESS_TOKEN=\"#{@access_token}\"")
 
       print "Copy your User ID: "
       @user_id = gets.chomp
-      @default_shell.puts("export FB_USER_ID=\"@user_id\"")
+      @default_shell.puts("export FB_USER_ID=\"#{@user_id}\"")
 
-      puts "OK, now restart your terminal or logout and login again."
+      puts "OK, your terminal will close in 30 seconds for changes to take effect, please re-open and run fitgem to open help."
+      `sleep 30s`
+      `exit`
     end
   end
 
