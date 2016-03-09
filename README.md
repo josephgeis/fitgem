@@ -1,11 +1,9 @@
-# fitgem [![Build Status](https://travis-ci.org/juniorRubyist/fitgem.svg?branch=less_interactive)](https://travis-ci.org/juniorRubyist/fitgem) [![Join the chat at https://gitter.im/juniorRubyist/fitgem](https://badges.gitter.im/juniorRubyist/fitgem.svg)](https://gitter.im/juniorRubyist/fitgem?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) :octocat:
+# fitgem [![Build Status](https://travis-ci.org/juniorRubyist/fitgem.svg?branch=less_interactive)](https://travis-ci.org/juniorRubyist/fitgem) [![Gitter](https://img.shields.io/gitter/room/juniorRubyist/fitgem.js.svg)]() [![Gem](https://img.shields.io/gem/dt/fitgem-app.svg?label=RubyGems downloads)]() [![Gem](https://img.shields.io/gem/v/fitgem-app.svg?label=On RubyGems)](https://rubygems.org/gems/fitgem-app) :octocat:
 
 A Ruby based Fitbit CLI client.
 
 Fitgem is an interactive CLI Fitbit client that can grab your basic activities from Fitbit.com and print them on your console.
-![Fitgem](fitgem.gif)
-
-> This is the beta version. It is ran with `fitgem <command>`
+![](http://imgur.com/Fi628Nc)
 
 ## Contents
 * [Dependencies/Requirements](#dependenciesrequirements)
@@ -20,8 +18,8 @@ Fitgem is an interactive CLI Fitbit client that can grab your basic activities f
 * Linux/Mac OSX 
 
 ## Install
-### RubyGems Method [![Gem](https://img.shields.io/gem/v/fitgem-app.svg)](https://rubygems.org/gems/fitgem-app) [![Gem](https://img.shields.io/gem/dt/fitgem-app.svg)](https://rubygems.org/gems/fitgem-app)
-![Gem Install Method](installgem.gif) 
+### RubyGems Method (Recommended) [![Gem](https://img.shields.io/gem/v/fitgem-app.svg)](https://rubygems.org/gems/fitgem-app) [![Gem](https://img.shields.io/gem/dt/fitgem-app.svg)](https://rubygems.org/gems/fitgem-app)
+![Gem Install Method](http://imgur.com/sI2eoMS) 
 
 1. Install RubyGems (included with Mac)
   1. Clone the RubyGems repository.
@@ -54,7 +52,7 @@ Fitgem is an interactive CLI Fitbit client that can grab your basic activities f
 5. Type `fitgem <command>` in a terminal window.
 
 ### Portable Installation
-![Git Installation](installgit.gif)
+> This method is not recommended for production uses.
 
 1. Clone the fitgem repository.
 
