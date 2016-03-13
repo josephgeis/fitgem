@@ -1,4 +1,4 @@
-# fitgem [![Build Status](https://travis-ci.org/juniorRubyist/fitgem.svg?branch=less_interactive)](https://travis-ci.org/juniorRubyist/fitgem) [![Gitter](https://img.shields.io/gitter/room/juniorRubyist/fitgem.js.svg)]() [![Gem](https://img.shields.io/gem/dt/fitgem-app.svg?label=RubyGems downloads)]() [![Gem](https://img.shields.io/gem/v/fitgem-app.svg?label=On RubyGems)](https://rubygems.org/gems/fitgem-app) :octocat:
+# fitgem [![Build Status](https://travis-ci.org/juniorRubyist/fitgem.svg?branch=less_interactive)](https://travis-ci.org/juniorRubyist/fitgem) [![Slack Chat](https://img.shields.io/badge/chat-on%20slack-brightgreen.svg)](#slack-chat) [![Gem](https://img.shields.io/gem/dt/fitgem-app.svg?label=RubyGems downloads)]() [![Gem](https://img.shields.io/gem/v/fitgem-app.svg?label=On RubyGems)](https://rubygems.org/gems/fitgem-app) :octocat:
 
 A Ruby based Fitbit CLI client.
 
@@ -11,6 +11,7 @@ Fitgem is an interactive CLI Fitbit client that can grab your basic activities f
   * [RubyGems Method](#rubygems-method-)
   * [Portable Installation](#portable-installation)
 * [Basic Usage](#basic-usage)
+* [Slack Chat](#slack-chat)
 
 ## Dependencies/Requirements
 * `ruby`
@@ -72,3 +73,10 @@ Fitgem is an interactive CLI Fitbit client that can grab your basic activities f
 4. Follow step 4 above.
 5. `chmod` `fitgem` to `775`.
 6. Run `./fitgem <command>` from where you installed it.
+
+# Slack Chat
+Please sign up for our Slack Chat here.
+[![Slack Chat Sign Up](https://img.shields.io/badge/slack chat-sign up-brightgreen.svg)](http://juniorrubyist.github.io/slack)
+
+Access Slack Chat here.
+[![Slack Chat](https://img.shields.io/badge/slack chat-online-brightgreen.svg)](http://juniorrubyist.slack.com)
