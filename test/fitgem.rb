@@ -9,19 +9,6 @@ class FitbitAccount
   def initialize()
     @access_token = `echo -n $FB_ACCESS_TOKEN`
     @user_id = `echo -n $FB_USER_ID`
-
-    if @access_token == "" && @user_id == ""
-      puts "We need some information. It will be saved"
-      print "Copy your Access Token: "
-      @access_token = gets.chomp
-
-      print "Copy your User ID: "
-      @user_id = gets.chomp
-
-      system( "clear" ) # Clears Screen
-      # system( "echo \"export FB_ACCESS_TOKEN=#{@access_token}\" >> ~/.bashrc")
-      @authorization_header = {"Authorization" => "Bearer #{@access_token}"}
-    end
   end
 
   def steps
@@ -86,24 +73,44 @@ class FitbitAccount
     puts "AUTHOR"
     puts "    Joseph Geis <geis28@gmail.com> (see files AUTHORS for details)."
   end
+
+  def setup
+    if @access_token == "" && @user_id == ""
+      @configuration = File.new(ENV['HOME']+"/.fitgem", "a+")
+      @configuration.puts("")
+
+      print "Copy your Access Token: "
+      @access_token = gets.chomp
+      @default_shell.puts("export FB_ACCESS_TOKEN=\"#{@access_token}\"")
+
+      print "Copy your User ID: "
+      @user_id = gets.chomp
+      @default_shell.puts("export FB_USER_ID=\"#{@user_id}\"")
+
+      puts "Alright sparky! Close your terminal or logout and login to get started."
+    else
+      puts "Hey, you've already finished setup!"
+    end
+  end
 end
 
 fitgem = FitbitAccount.new()
-
 choice = ARGV[0]
-case choice
-when 'steps', 's'
-  puts fitgem.steps
-when 'distance', 'd'
-  puts fitgem.distance
-when 'floors', 'f'
-  puts fitgem.floors
-when 'calories', 'c'
-  puts calories
-when 'full', 'all', 'a'
-  fitgem.full_report
-when 'help', 'h', '?'
-  fitgem.help
-else
-  fitgem.help
+unless `echo -n $TRAVIS_CI` == "true"
+  case choice
+  when 'steps', 's'
+    puts "#{fitgem.steps} steps taken"
+  when 'distance', 'd'
+    puts "#{fitgem.distance} miles walked"
+  when 'floors', 'f'
+    puts "#{fitgem.floors} floors climbed"
+  when 'calories', 'c'
+    puts "#{fitgem.calories} calories burned"
+  when 'full', 'all', 'a'
+    fitgem.full_report
+  when 'help', 'h', '?'
+    fitgem.help
+  else
+    puts "Are you lost?, run fitgem help"
+  end
 end
