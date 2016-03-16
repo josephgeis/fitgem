@@ -22,7 +22,7 @@ class FitbitAccount
           puts "Please report this issue on the FitGem (juniorRubyist/fitgem) issue tracker on Github."
         end
       when 403
-        if @parsed_response["errors"][0]["insufficient_scope"] == "invalid_client"
+        if @parsed_response["errors"][0]["errorType"] == "insufficient_scope"
           puts "Please report this issue on the FitGem (juniorRubyist/fitgem) issue tracker on Github."
         else
           puts "You may need to modify your privacy settings. Then, try again."
