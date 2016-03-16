@@ -29,6 +29,9 @@ class FitbitAccount
         end
       when 404
         puts "Please report this issue on the FitGem (juniorRubyist/fitgem) issue tracker on Github."
+      when 429
+        puts "Oops, you've exceeded your limit of 150 requests per hour. Try again on the :00."
+        exit
       when 500...600
         puts "Oh no, there might be a Fitbit service outage! Try again soon."
         exit
