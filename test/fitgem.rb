@@ -2,6 +2,9 @@
 require 'httparty'
 require 'multi_json'
 
+class APIError < RuntimeError
+end
+
 class FitbitAccount
   include HTTParty
   @@base_uri = 'api.fitbit.com/1/user'
@@ -11,10 +14,36 @@ class FitbitAccount
     @user_id = `echo -n $FB_USER_ID`
   end
 
+  def error_check
+    if @parsed_response["success"] == false
+      case @parsed_response.code
+      when 401
+        if @parsed_response["errors"][0]["errorType"] == "invalid_client"
+          puts "Please report this issue on the FitGem (juniorRubyist/fitgem) issue tracker on Github."
+        end
+      when 403
+        if @parsed_response["errors"][0]["insufficient_scope"] == "invalid_client"
+          puts "Please report this issue on the FitGem (juniorRubyist/fitgem) issue tracker on Github."
+        else
+          puts "You may need to modify your privacy settings. Then, try again."
+        end
+      when 404
+        puts "Please report this issue on the FitGem (juniorRubyist/fitgem) issue tracker on Github."
+      when 500...600
+        puts "Oh no, there might be a Fitbit service outage! Try again soon."
+        exit
+      else
+        puts "Please report this issue on the FitGem (juniorRubyist/fitgem) issue tracker on Github."
+      end
+      raise APIError, @parsed_response
+    end
+  end
+
   def steps
     @response = self.class.get("https://#{@@base_uri}/#{@user_id}/activities/steps/date/today/1d/1min.json",
       :headers => {"Authorization" => "Bearer #{@access_token}"})
     @parsed_response = MultiJson.load(@response.body)
+    self.error_check
     @parsed_response = @parsed_response["activities-steps"][0]["value"].to_i
   end
 
@@ -22,6 +51,7 @@ class FitbitAccount
     @response = self.class.get("https://#{@@base_uri}/#{@user_id}/activities/floors/date/today/1d/1min.json",
       :headers => {"Authorization" => "Bearer #{@access_token}"})
     @parsed_response = MultiJson.load(@response.body)
+    self.error_check
     @parsed_response = @parsed_response["activities-floors"][0]["value"].to_i
   end
 
@@ -29,6 +59,7 @@ class FitbitAccount
     @response = self.class.get("https://#{@@base_uri}/#{@user_id}/activities/calories/date/today/1d/1min.json",
       :headers => {"Authorization" => "Bearer #{@access_token}"})
     @parsed_response = MultiJson.load(@response.body)
+    self.error_check
     @parsed_response = @parsed_response["activities-calories"][0]["value"].to_i
   end
 
@@ -36,6 +67,7 @@ class FitbitAccount
     @response = self.class.get("https://#{@@base_uri}/#{@user_id}/activities/distance/date/today/1d/1min.json",
       :headers => {"Authorization" => "Bearer #{@access_token}"})
     @parsed_response = MultiJson.load(@response.body)
+    self.error_check
     @parsed_response = @parsed_response["activities-distance"][0]["value"]
   end
 
