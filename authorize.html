@@ -25,14 +25,13 @@
       </div>
       <div class="row marketing">
         <div class="col-lg-6">
+          <h4>You Authentication Code</h4>
+          <p>You must add this authentication code to your <code>.bashrc</code> or default shell configuration.</p>
+          <p><code>export FB_ACCESS_TOKEN=<span id="access_token" style="word-wrap: break-word;"></span></br>export FB_USER_ID=<span id="user_id"></span></code></p>
           <h4>Access Token</h4>
           <p>Used for authenticating your requests. <em>Required</em></p>
           <p>Your Access Token: <code id="access_token" style="word-wrap: break-word;">Please Authorize</code></p>
-
-          <h4>Expires In</h4>
-          <p>How long the program is allowed to use the access token. <em>Good To Know</em></p>
-          <p>Expires In: <code id="expires_in">0</code> seconds</p>
-
+          
           <h4>User ID</h4>
           <p>Your Account's ID number to acces your information. <em>Required</em></p>
           <p>Your User ID: <code id="user_id">Please Authorize</code></p>
@@ -42,55 +41,20 @@
           <p>In your terminal, push <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd></p>
           <p>DO NOT push <kbd>Ctrl</kbd>+<kbd>V</kbd></p>
 
-          <h4>Privacy</h4>
-          <p>We don't store your credentials or information on our servers or programs.</p>
-          <p>We promise you!</p>
+          <h4>Privacy Policy</h4>
+          <p>We don't store your credentials or information on our servers or programs. If you have a concern, please report it in Github Issues for this project or stop using this program.</p>
 
           <h4>Authorize</h4>
           <p>Please authorize Fitbit by clicking this button below.</p>
-          <a href="https://www.fitbit.com/oauth2/authorize?client_id=2299JT&response_type=token&scope=activity&prompt=consent" class="btn btn-success" role="button">Authorize Fitbit</a>
+          <a href="https://www.fitbit.com/oauth2/authorize?client_id=2299JT&response_type=token&scope=activity&prompt=consent&expires_in=31536000" class="btn btn-success" role="button">Authorize Fitbit</a>
         </div>
       </div>
     </div>
-    <!--<script type="text/javascript">
-      var get_params = function(search_string) {
-        var parse = function(params, pairs) {
-        var pair = pairs[0];
-        var parts = pair.split('=');
-        var key = decodeURIComponent(parts[0]);
-        var value = decodeURIComponent(parts.slice(1).join('='));
-      
-        // Handle multiple parameters of the same name
-        if (typeof params[key] === "undefined") {
-          params[key] = value;
-        } else {
-          params[key] = [].concat(params[key], value);
-        }
-              return pairs.length == 1 ? params : parse(params, pairs.slice(1))
-      }
-        // Get rid of leading ?
-        return search_string.length == 0 ? {} : parse({}, search_string.substr(1).split('&'));
-      }
-
-      var params = get_params(location.search);
-      
-      // Variables for stuff
-      var access_token_html = document.getElementById('access_token');
-      var expires_in_html = document.getElementById('expires_in');
-      var user_id_html = document.getElementById('user_id');
-      
-      // Set <code> tags to correct values.
-      access_token_html.innerHTML = params['access_token'];
-      expires_in_html.innerHTML = params['expires_in'];
-      user_id_html.innerHTML = params['user_id'];
-    </script> -->
     <script>
       var access_token_html = document.getElementById('access_token');
-      var expires_in_html = document.getElementById('expires_in');
       var user_id_html = document.getElementById('user_id');
       // Set <code> tags to correct values.
       access_token_html.innerHTML = getUrlVars()["access_token"];
-      expires_in_html.innerHTML = getUrlVars()["expires_in"];
       user_id_html.innerHTML = getUrlVars()["user_id"];
     </script>
   </body>
