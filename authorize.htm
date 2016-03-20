@@ -19,6 +19,19 @@
   </head>
   <body>
     <div class="container">
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="index.htm">FitGem</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a href="index.htm">Home</a></li>
+            <li><a href="install.htm">Install</a></li>
+            <li class="active"><a href="authorize.htm">Authorize</a></li>
+          </ul>
+        </div>
+      </nav>
+
       <div class="jumbotron">
         <h1>Fitbit Authorization</h1>
         <p class="lead">You will get the information that you must copy/paste below.</p>
@@ -31,7 +44,7 @@
           <h4>Access Token</h4>
           <p>Used for authenticating your requests. <em>Required</em></p>
           <p>Your Access Token: <code id="access_token" style="word-wrap: break-word;">Please Authorize</code></p>
-          
+
           <h4>User ID</h4>
           <p>Your Account's ID number to acces your information. <em>Required</em></p>
           <p>Your User ID: <code id="user_id">Please Authorize</code></p>

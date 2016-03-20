@@ -29,31 +29,29 @@
           </ul>
         </div>
       </nav>
-
       <div class="jumbotron">
-        <h1>FitGem</h1>
-        <p class="lead">A simple Fitbit CLI Client</p>
+        <h1>Install FitGem</h1>
+        <p class="lead">Available as a RubyGem on Mac OS X and Linux</p>
       </div>
 
-      <blockquote>
-        <p>Are you here to link your Fitbit account to FitGem? <a href="#authorization">Click Here</a> for instructions.</p>
-      </blockquote>
-
-      <h3>Easy to use</h3>
-      <p>In FitGem, to access your step count, just use this command:</p>
-      <pre>
-        fitgem steps
-      </pre>
-      <p>It's that easy!</p>
-
-      <h3>Secure access</h3>
+      <h2 id="installation">Installation</h2>
       <p>
-        FitGem uses the latest OAuth 2.0 standards to keep you safe from data attacks.
+        FitGem can be installed in the RubyGems format on Linux and Mac OS X alike.
+      </p>
+      <pre>
+        sudo gem install fitgem-app
+      </pre>
+
+      <p>
+        <em>
+          <strong>Note:</strong> <code>sudo</code> is used on Mac OS X and Debian-like systems to grant you super powers (root user access) and may be different on certain systems.
+        </em>
       </p>
 
-      <h3>Very fast</h3>
+      <h3 id="authorization">Authorization</h3>
       <p>
-        FitGem is built upon Ruby 2.3 and the latest <code>httparty</code> and <code>multi-json</code> libraries.
+        To set up FitGem, you must add some lines of code to your <code>.bashrc</code>, <code>.zshenv</code>, or default shell configuration/environment variable file. You can get these lines of code at <a href="https://www.fitgem.tk/authorize.html">the authorization page</a>.
       </p>
     </div>
+  </body>
 </html>
