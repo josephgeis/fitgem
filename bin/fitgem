@@ -16,7 +16,7 @@ class FitbitAccount
 
   def error_check
     if @parsed_response["success"] == false
-      case @parsed_response.code
+      case @response.code
       when 401
         if @parsed_response["errors"][0]["errorType"] == "invalid_client"
           puts "Please report this issue on the FitGem (juniorRubyist/fitgem) issue tracker on Github."
