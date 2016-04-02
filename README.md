@@ -80,3 +80,5 @@ Please sign up for our Slack Chat here.
 
 Access Slack Chat here.
 [![Slack Chat](https://img.shields.io/badge/slack chat-online-brightgreen.svg)](http://juniorrubyist.slack.com)
+
+**<>** with <3 in California
